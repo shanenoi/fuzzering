@@ -1,3 +1,5 @@
+// Copyright 2021 Shanenoi
+
 #include <stdio.h>
 #include "../levenshtein_distance/levenshtein.h"
 

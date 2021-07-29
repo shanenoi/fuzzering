@@ -1,5 +1,7 @@
-#ifndef LEVENSHTEIN_H
-#define LEVENSHTEIN_H
+// Copyright 2021 Shanenoi
+
+#ifndef LEVENSHTEIN_DISTANCE_LEVENSHTEIN_H_
+#define LEVENSHTEIN_DISTANCE_LEVENSHTEIN_H_
 
 /* in some document the default cost is 2*/
 #define DEFAULT_COST 1
@@ -18,10 +20,10 @@ int _levenshtein_distance(char *string1, char *string2) {
     int max = _max2n(len_str1, len_str2);
 
     int cost,
-	result,
-        deletion,
-        insertion,
-        substitution;
+        result,
+        del,
+        insert,
+        sub;
 
     for (int index = 0; index < max; index++) {
         if (index < len_str1) {
@@ -41,17 +43,11 @@ int _levenshtein_distance(char *string1, char *string2) {
                 cost = DEFAULT_COST;
             }
 
-            deletion = matrix[index_str1 - 1][index_str2] + 1;
-            insertion = matrix[index_str1][index_str2 - 1] + 1;
-            substitution = matrix[index_str1 - 1][index_str2 - 1] + cost;
+            del = matrix[index_str1 - 1][index_str2] + 1;
+            insert = matrix[index_str1][index_str2 - 1] + 1;
+            sub = matrix[index_str1 - 1][index_str2 - 1] + cost;
 
-            matrix[index_str1][index_str2] = _min2n(
-                deletion,
-                _min2n(
-                    insertion,
-                    substitution
-                )
-            );
+            matrix[index_str1][index_str2] = _min2n(del, _min2n(insert, sub));
         }
     }
 
@@ -65,12 +61,6 @@ int _levenshtein_distance(char *string1, char *string2) {
 }
 
 float _simular_percentage(int distance, int len_str1, int len_str2) {
-    printf(
-        "%d - %d - %d\n",
-        len_str1,
-        len_str2,
-        distance
-    );
     return (len_str1 + len_str2 - distance - 0.0) / (len_str1 + len_str2 + 0.0);
 }
 
@@ -123,4 +113,4 @@ float _search_include(char *target, char *content) {
     return _simular_percentage(result, len_target, len_content);
 }
 
-#endif /*LEVENSHTEIN_H*/
+#endif  // LEVENSHTEIN_DISTANCE_LEVENSHTEIN_H_

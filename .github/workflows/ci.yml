@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10.10
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.0.0
+    - name: Prepare
+      run: sudo pip install cpplint; sudo apt install postgresql-server-dev-all
+    - name: Cpplint
+      run: cpplint **/*.h **/*.c
+        # - name: Build
+        #   run: make USE_PGXS=1

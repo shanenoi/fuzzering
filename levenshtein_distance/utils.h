@@ -1,8 +1,10 @@
-#ifndef UTILS_H
-#define UTILS_H
+// Copyright 2021 Shanenoi
 
-#include <stdlib.h>
-#include <string.h>
+#ifndef LEVENSHTEIN_DISTANCE_UTILS_H_
+#define LEVENSHTEIN_DISTANCE_UTILS_H_
+
+#include "stdlib.h"
+#include "string.h"
 
 #define _max2n(a, b) (a + b + abs(a - b)) / 2
 #define _min2n(a, b) (a + b - abs(a - b)) / 2
@@ -15,11 +17,7 @@ char* _substr(const char*, int, int);
 #define TAB '\t'
 
 int _accepted_chars(char c) {
-    return (
-        c != TAB &&
-        c!= NEWLINE &&
-        c!= SPACE
-    );
+    return (c != TAB && c!= NEWLINE && c!= SPACE);
 }
 
 char* _substr(const char *src, int start, int end) {
@@ -40,4 +38,4 @@ char* _remove_useless(char *string, int (*checker)(char)) {
     return result;
 }
 
-#endif /*UTILS_H*/
+#endif  // LEVENSHTEIN_DISTANCE_UTILS_H_
