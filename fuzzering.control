@@ -1,0 +1,5 @@
+# levenshtein postgresql extension
+comment = 'search string content'
+default_version = '0.0.1'
+module_pathname = '$libdir/levenshtein'
+relocatable = false

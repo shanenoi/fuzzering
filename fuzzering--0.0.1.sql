@@ -1,0 +1,14 @@
+--complain if script is sourced in psql, rather than via CREATE EXTENSION
+\echo Use "CREATE EXTENSION fuzzering;" to load this file. \quit
+ 
+CREATE OR REPLACE FUNCTION levenshtein(text, text) RETURNS int32
+AS 'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION fuzzering(text, text) RETURNS float8
+AS 'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
+
+CREATE OR REPLACE FUNCTION simular(int32, int32, int32) RETURNS float8
+AS 'MODULE_PATHNAME'
+LANGUAGE C IMMUTABLE STRICT;
