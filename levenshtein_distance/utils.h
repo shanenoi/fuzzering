@@ -4,12 +4,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define _min3n(a, b, c) (a+b-abs(a-b)+c*2)/4 - abs(a+b-abs(a-b)-c*2)/4
 #define _max2n(a, b) (a + b + abs(a - b)) / 2
+#define _min2n(a, b) (a + b - abs(a - b)) / 2
+int _accepted_chars(char);
+char* _remove_useless(char*, int (*checker)(char));
+char* _substr(const char*, int, int);
 
-#define REMOVE_SPACE ' '
-#define REMOVE_NEWLINE '\n'
-#define REMOVE_TAB '\t'
+#define SPACE ' '
+#define NEWLINE '\n'
+#define TAB '\t'
+
+int _accepted_chars(char c) {
+    return (
+        c != TAB &&
+        c!= NEWLINE &&
+        c!= SPACE
+    );
+}
 
 char* _substr(const char *src, int start, int end) {
     int len = end - start;
@@ -18,7 +29,7 @@ char* _substr(const char *src, int start, int end) {
     return dest;
 }
 
-char* _remove_useless(char* string, int (*checker)(char)) {
+char* _remove_useless(char *string, int (*checker)(char)) {
     int string_len = strlen(string);
     char *result = (char*) malloc(string_len);
     int result_index = 0;
