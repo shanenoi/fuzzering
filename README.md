@@ -150,6 +150,10 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 <!-- CONTRIBUTING -->
 ## Contributing
 
+**_Code Base_**
+
+![CODE BASE][codebase]
+
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
@@ -188,3 +192,4 @@ Project Link: [Fuzzering](https://github.com/shanenoi/fuzzering)
 [license-url]: https://github.com/shanenoi/fuzzering/blob/master/LICENSE.txt
 [product-screenshot]: images/show_product.png
 [result-query]: images/result.png
+[codebase]: images/codebase.svg
